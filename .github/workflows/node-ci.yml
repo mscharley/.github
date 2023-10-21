@@ -4,6 +4,9 @@ on:
       node-version:
         type: "string"
         required: true
+      use-workspaces:
+        type: "boolean"
+        default: false
       timeout-minutes:
         type: "number"
         default: 15
@@ -19,6 +22,6 @@ jobs:
           node-version: ${{ inputs.node-version }}
           cache: 'npm'
       - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test
+      - run: npm run ${{ inputs.use-workspaces && '--workspaces' || '' }} build --if-present
+      - run: npm test ${{ inputs.use-workspaces && '--workspaces' || '' }}
         timeout-minutes: ${{ inputs.timeout-minutes }}
