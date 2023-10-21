@@ -4,6 +4,8 @@ on:
       token:
         description: GitHub token used to create release PR's
         required: true
+      npm-token:
+        description: NPM token used to deploy updates to the package registry
 
 jobs:
   release:
@@ -37,4 +39,4 @@ jobs:
           createGithubReleases: true
         env:
           GITHUB_TOKEN: ${{ secrets.token }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.npm-token }}
