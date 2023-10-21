@@ -37,11 +37,15 @@ jobs:
         uses: changesets/action@f13b1baaa620fde937751f5d2c3572b9da32af23 # v1.4.5
         with:
           version: npm run cs-version
-          publish: sh -c 'GITHUB_TOKEN="${GITHUB_RELEASE_TOKEN}" npm run cs-release'
           commit: 'ci(changesets): version packages'
           title: 'Release next version'
           createGithubReleases: true
         env:
           GITHUB_TOKEN: ${{ secrets.token }}
-          GITHUB_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to npm
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        run: npm run cs-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.npm-token }}
