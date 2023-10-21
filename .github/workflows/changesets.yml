@@ -6,6 +6,7 @@ on:
         required: true
       npm-token:
         description: NPM token used to deploy updates to the package registry
+        required: true
 
 jobs:
   release:
