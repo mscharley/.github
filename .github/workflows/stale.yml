@@ -17,7 +17,7 @@ jobs:
           days-before-close: 7
           days-before-pr-close: -1
           any-of-labels: 'bug'
-      - uses: dessant/lock-threads@d42e5f49803f3c4e14ffee0378e31481265dda22 # v5.0.0
+      - uses: dessant/lock-threads@1bf7ec25051fe7c00bdd17e6a7cf3d7bfb7dc771 # v5.0.1
         with:
           issue-inactive-days: '14'
           pr-inactive-days: '28'
