@@ -1,5 +1,10 @@
 on:
   workflow_call:
+    inputs:
+      node-version-file:
+        type: "string"
+        default: '.nvmrc'
+        required: false
     secrets:
       token:
         description: GitHub token used to create release PR's
@@ -29,7 +34,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
         with:
-          node-version-file: .nvmrc
+          node-version-file: ${{ inputs.node-version-file }}
           cache: npm
 
       - name: Install Dependencies
