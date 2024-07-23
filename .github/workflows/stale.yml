@@ -22,3 +22,4 @@ jobs:
         with:
           issue-inactive-days: '14'
           pr-inactive-days: '28'
+          discussion-inactive-days: '365'
