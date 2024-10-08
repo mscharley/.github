@@ -28,34 +28,34 @@ jobs:
         with:
           token: ${{ secrets.token }}
           persist-credentials: true
-
       - name: Authenticate with registry
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.npm-token }}" > ~/.npmrc
+      - uses: pnpm/action-setup@v4
       - name: Setup Node.js
         uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4.0.4
         with:
           node-version-file: ${{ inputs.node-version-file }}
-          cache: npm
+          cache: pnpm
 
       - name: Install Dependencies
-        run: npm ci
+        run: pnpm install
 
       - name: Create Release Pull Request
         id: changesets
         uses: changesets/action@3de3850952bec538fde60aac71731376e57b9b57 # v1.4.8
         with:
-          version: npm run cs-version
+          version: pnpm run cs-version
           commit: 'ci(changesets): version packages'
           title: 'Release next version'
         env:
           GITHUB_TOKEN: ${{ secrets.token }}
 
-      - name: Publish to npm
+      - name: Publish to corepack ${{ inputs.package-manager }}
         if: steps.changesets.outputs.hasChangesets == 'false'
         uses: changesets/action@3de3850952bec538fde60aac71731376e57b9b57 # v1.4.8
         with:
           version: 'true'
-          publish: npm run cs-release
+          publish: pnpm run cs-release
           createGithubReleases: true
         env:
           GITHUB_TOKEN: ${{ secrets.token }}
