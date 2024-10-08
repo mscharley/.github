@@ -30,7 +30,7 @@ jobs:
           persist-credentials: true
       - name: Authenticate with registry
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.npm-token }}" > ~/.npmrc
-      - uses: pnpm/action-setup@v4.0.0
+      - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
       - name: Setup Node.js
         uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4.0.4
         with:
