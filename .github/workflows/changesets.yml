@@ -50,7 +50,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.token }}
 
-      - name: Publish to corepack ${{ inputs.package-manager }}
+      - name: Publish to NPM registry
         if: steps.changesets.outputs.hasChangesets == 'false'
         uses: changesets/action@3de3850952bec538fde60aac71731376e57b9b57 # v1.4.8
         with:
