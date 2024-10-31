@@ -19,4 +19,4 @@ jobs:
           node-version-file: ${{ inputs.node-version-file }}
           cache: pnpm
       - run: pnpm install
-      - run: pnpm run stryker
+      - run: pnpx turbo stryker
