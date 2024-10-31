@@ -5,6 +5,9 @@ on:
         type: "string"
         default: '.nvmrc'
         required: false
+      timeout-minutes:
+        type: "number"
+        default: 60
 
 jobs:
   stryker:
@@ -19,4 +22,7 @@ jobs:
           node-version-file: ${{ inputs.node-version-file }}
           cache: pnpm
       - run: pnpm install
-      - run: pnpx turbo stryker
+      - run: pnpm exec turbo build
+        timeout-minutes: ${{ inputs.timeout-minutes }}
+      - run: pnpm exec turbo stryker
+        timeout-minutes: ${{ inputs.timeout-minutes }}
