@@ -49,7 +49,7 @@ jobs:
 
       - name: Create Release Pull Request
         id: changesets
-        uses: changesets/action@c8bada60c408975afd1a20b3db81d6eee6789308 # v1.4.9
+        uses: changesets/action@06245a4e0a36c064a573d4150030f5ec548e4fcc # v1.4.10
         with:
           version: pnpm run cs-version
           commit: 'ci(changesets): version packages'
@@ -59,7 +59,7 @@ jobs:
 
       - name: Publish to NPM registry
         if: steps.changesets.outputs.hasChangesets == 'false'
-        uses: changesets/action@c8bada60c408975afd1a20b3db81d6eee6789308 # v1.4.9
+        uses: changesets/action@06245a4e0a36c064a573d4150030f5ec548e4fcc # v1.4.10
         with:
           version: 'true'
           publish: pnpm run cs-release
