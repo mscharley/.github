@@ -1,6 +1,9 @@
 on:
   workflow_call:
     inputs:
+      cache-key:
+        type: "string"
+        default: "v1"
       node-version-file:
         type: "string"
         required: false
