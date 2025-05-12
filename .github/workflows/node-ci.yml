@@ -31,7 +31,7 @@ jobs:
         run: |-
           asdf plugin add nodejs
           INPUT='${{ inputs.node-version }}'
-          VERSION=`if [[ "$INPUT" = "current" ]]; then asdf list all nodejs | tail -n 1; else v=(${INPUT//./ }); asdf list all nodejs "${v[0]}" | tail -n 1; fi`
+          VERSION=`if [[ "$INPUT" = "current" ]]; then asdf latest nodejs; else v=(${INPUT//./ }); asdf latest nodejs "${v[0]}"; fi`
           sed -i -E 's/^nodejs .*/nodejs '"${VERSION}"'/' .tool-versions
           echo '--- Updated tool versions ---'
           cat .tool-versions
