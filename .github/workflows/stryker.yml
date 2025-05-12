@@ -28,7 +28,7 @@ jobs:
         with:
           path: /home/runner/.asdf
           key: asdf-${{ runner.os }}-${{ inputs.cache-key }}-${{ hashFiles('.tool-versions') }}
-      - uses: asdf-vm/actions/install@05e0d2ed97b598bfce82fd30daf324ae0c4570e6 # v3.0.2
+      - uses: asdf-vm/actions/install@9cd779f40fe38688dd19505ccbc4eaaf018b44e7 # main
       - run: pnpm install
       - run: pnpm exec turbo build
         timeout-minutes: ${{ inputs.timeout-minutes }}
