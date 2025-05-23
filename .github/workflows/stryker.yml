@@ -22,7 +22,7 @@ jobs:
       - name: Check version file
         if: ${{ inputs.node-version-file != '' }}
         run: echo "::warning file=.github/workflows,title=Changesets no longer supports node-version-file::Please remove this input variable"
-      - uses: asdf-vm/actions/setup@05e0d2ed97b598bfce82fd30daf324ae0c4570e6 # v3.0.2
+      - uses: asdf-vm/actions/setup@1902764435ca0dd2f3388eea723a4f92a4eb8302 # v4.0.0
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
         with:
