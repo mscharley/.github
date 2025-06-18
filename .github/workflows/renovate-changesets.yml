@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Update PR
-        uses: mscharley/dependency-changesets-action@fix-error-reporting #b6ed60b41ebae79840ddc628f5238f626a95bf51 # v1.1.4
+        uses: mscharley/dependency-changesets-action@b6ed60b41ebae79840ddc628f5238f626a95bf51 # v1.1.4
         with:
           token: ${{ secrets.token }}
           use-conventional-commits: true
