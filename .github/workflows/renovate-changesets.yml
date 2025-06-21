@@ -13,9 +13,10 @@ jobs:
 
     steps:
       - name: Update PR
-        uses: mscharley/dependency-changesets-action@d6becc5b3f7375850f1a968f4c19c7bf25716733 # v1.1.6
+        uses: mscharley/dependency-changesets-action@9627b26cfcbc22fa47cc45d8e9d79107e3909965 # v1.1.7
         with:
           token: ${{ secrets.token }}
           use-conventional-commits: true
           author-name: Renovate Changesets
           author-email: github+renovate@scharley.me
+          author-dco: true
