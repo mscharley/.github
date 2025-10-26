@@ -15,15 +15,14 @@ jobs:
   stryker:
     runs-on: ubuntu-latest
     env:
-      ASDF_NODEJS_AUTO_ENABLE_COREPACK: 'true'
       COREPACK_INTEGRITY_KEYS: '0'
 
     steps:
       - name: Check version file
         if: ${{ inputs.node-version-file != '' }}
         run: echo "::warning file=.github/workflows,title=Changesets no longer supports node-version-file::Please remove this input variable"
-      - name: Ensure corepack is available
-        run: echo 'corepack' >> ~/.default-npm-packages
+      - name: Ensure pnpm is available
+        run: echo 'pnpm' >> ~/.default-npm-packages
       - uses: asdf-vm/actions/setup@1902764435ca0dd2f3388eea723a4f92a4eb8302 # v4.0.0
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
