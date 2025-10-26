@@ -31,8 +31,8 @@ jobs:
       - name: Check version file
         if: ${{ inputs.node-version-file != '' }}
         run: echo "::warning file=.github/workflows,title=Changesets no longer supports node-version-file::Please remove this input variable"
-      - name: Ensure corepack is available
-        run: echo 'corepack' >> ~/.default-npm-packages
+      - name: Ensure pnpm is available
+        run: echo 'pnpm' >> ~/.default-npm-packages
       - name: Checkout Repo
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
@@ -47,7 +47,7 @@ jobs:
       - uses: asdf-vm/actions/install@1902764435ca0dd2f3388eea723a4f92a4eb8302 # v4.0.0
 
       - name: Install Dependencies
-        run: corepack pnpm install
+        run: pnpm install
 
       - name: Create Release Pull Request
         id: changesets
@@ -64,7 +64,7 @@ jobs:
         uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba # v1.5.3
         with:
           version: 'true'
-          publish: corepack pnpm run cs-release
+          publish: pnpm run cs-release
           createGithubReleases: true
         env:
           GITHUB_TOKEN: ${{ secrets.token }}
